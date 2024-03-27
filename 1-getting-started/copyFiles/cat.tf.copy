@@ -1,0 +1,5 @@
+resource "local_file" "cat" {
+  filename        = "/home/brayanmarin/cat.txt"
+  content         = "I have a cat"
+  file_permission = "0700"
+}

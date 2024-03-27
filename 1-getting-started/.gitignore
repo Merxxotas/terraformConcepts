@@ -1,0 +1,8 @@
+# .gitignore para erraform
+
+# Ignore .terraform folder
+**/.terraform/*
+
+# Ignore local state files 
+*.tfstate
+*.tfstate.*

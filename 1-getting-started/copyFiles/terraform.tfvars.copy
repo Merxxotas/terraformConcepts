@@ -1,0 +1,5 @@
+filename  = "/home/brayanmarin/home3.txt"
+content   = "I love Doggies PEPITO MORALES"
+prefix    = "Mr"
+separator = "-"
+length    = "1"
