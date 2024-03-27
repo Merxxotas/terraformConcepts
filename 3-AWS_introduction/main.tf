@@ -10,9 +10,8 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  region     = "sa-east-1"
-  access_key = "AKIAZI2LCZEY33IHZNFS"
-  secret_key = "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"
+  region  = "sa-east-1"
+  profile = "terraformCourse"
 }
 
 resource "aws_iam_user" "admin-user" {
