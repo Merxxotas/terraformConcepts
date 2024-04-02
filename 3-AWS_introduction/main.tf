@@ -48,7 +48,7 @@ resource "aws_s3_bucket_object" "finance-2024" {
 
 
 resource "aws_s3_object" "finance-2024_1" {
-  source = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
-  key    = "terraformVideo0.mp4"
-  bucket = aws_s3_bucket.finance.id
+  content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
+  key     = "terraformVideo0.mp4"
+  bucket  = aws_s3_bucket.finance.id
 }
