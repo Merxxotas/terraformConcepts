@@ -33,21 +33,21 @@ resource "aws_iam_user_policy_attachment" "lucy-admin-access" {
 }
 
 resource "aws_s3_bucket" "finance" {
-  bucket = "finanace-02042024"
+  bucket = "finance-02042024"
   tags = {
     description = "Finance and Payroll"
   }
 }
 
 
-# resource "aws_s3_bucket_object" "finance-2024" {
-#   content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
-#   key     = "terraformVideo0.mp4"
-#   bucket  = aws_s3_bucket.finance.id
-# }
+resource "aws_s3_bucket_object" "finance-2024" {
+  content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
+  key     = "terraformVideo0.mp4"
+  bucket  = aws_s3_bucket.finance.id
+}
 
 
-resource "aws_s3_object" "finance-2024" {
+resource "aws_s3_object" "finance-2024_1" {
   source = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
   key    = "terraformVideo0.mp4"
   bucket = aws_s3_bucket.finance.id
