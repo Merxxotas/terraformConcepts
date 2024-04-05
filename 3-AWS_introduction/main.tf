@@ -38,17 +38,45 @@ resource "aws_s3_bucket" "finance" {
     description = "Finance and Payroll"
   }
 }
+resource "aws_s3_object" "finance-2024" {
+  source = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
+  key    = "terraformVideo0.mp4"
+  bucket = aws_s3_bucket.finance.id
+}
 
-
-resource "aws_s3_bucket_object" "finance-2024" {
-  content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
-  key     = "terraformVideo0.mp4"
+resource "aws_s3_object" "example" {
+  content = "Hello, World!"
+  key     = "helloWorld.txt"
   bucket  = aws_s3_bucket.finance.id
 }
 
-
-resource "aws_s3_object" "finance-2024_1" {
-  content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
-  key     = "terraformVideo0.mp4"
-  bucket  = aws_s3_bucket.finance.id
+data "aws_iam_group" "finance-data" {
+  group_name = "finance-analysts"
 }
+
+resource "aws_s3_bucket_policy" "finance-policy" {
+  bucket = aws_s3_bucket.finance.id
+  policy = <<-EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "*",
+        "Resource": "arn:aws:s3:::${aws_s3_bucket.finance.bucket}/*",
+        "Principal": {
+          "AWS": [
+            "${data.aws_iam_group.finance-data.arn}"
+          ]
+        }
+      }
+    ]
+}
+EOF
+}
+
+# resource "aws_s3_bucket_object" "finance-2024" {
+#   content = "/home/brayanmarin/s3Proof/terraformVideo0.mp4"
+#   key     = "terraformVideo0.mp4"
+#   bucket  = aws_s3_bucket.finance.id
+# }
